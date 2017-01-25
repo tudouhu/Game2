@@ -7,7 +7,7 @@ import '../vendors/createjs';
 import Other from 'Other';
 import Test from 'Test';
 import Timer from 'common/Timer';
-
+import Lib from 'res/Lib';
 
 /**
  * 继承React.Component类 React组件类继承可以写成html写法
@@ -45,7 +45,12 @@ class Main extends React.Component{
 
     //new一个Other类实例对象
     var txt=new Other();
-    txt.y = 50;
+    txt.y = 70;
+
+    //创建Flash打包的元件
+    var flash=new Lib.Instance();
+    flash.x = 200;
+    flash.y = 30;
 
 
     // 创建一个舞台，参数为画布
@@ -53,7 +58,7 @@ class Main extends React.Component{
     //createjs创建的舞台刷新才能显示，下面通过计时器设置为30毫秒刷新一次的帧频
     Timer.add(e=>{stage.update();},30,0);
     //添加到舞台显示，可以添加多个
-    stage.addChild(testS,txt);
+    stage.addChild(testS,txt,flash);
 
   }
 
