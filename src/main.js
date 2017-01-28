@@ -52,6 +52,11 @@ class Main extends React.Component{
     flash.x = 200;
     flash.y = 30;
 
+    //给文档添加鼠标移动事件
+    document.addEventListener("mousemove",e=>{flash.txt.text=e.clientX+','+e.clientY});
+    //给姓名输入框添加输入事件
+    this.refs.name.addEventListener("input",e=>{console.log(e.target.value)});
+
 
     // 创建一个舞台，参数为画布
     var stage=new createjs.Stage(this.refs.myCan);
