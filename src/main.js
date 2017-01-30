@@ -8,6 +8,7 @@ import Other from 'Other';
 import Test from 'Test';
 import Timer from 'common/Timer';
 import Lib from 'res/Lib';
+import Woody from 'components/Woody';
 
 /**
  * 继承React.Component类 React组件类继承可以写成html写法
@@ -52,6 +53,13 @@ class Main extends React.Component{
     flash.x = 200;
     flash.y = 30;
 
+    //创建人物
+    this.woody=new Woody();
+    this.woody.x=100;
+    this.woody.y=180;
+
+
+
     //给文档添加鼠标移动事件
     document.addEventListener("mousemove",e=>{flash.txt.text=e.clientX+','+e.clientY});
     //给姓名输入框添加输入事件
@@ -63,7 +71,7 @@ class Main extends React.Component{
     //createjs创建的舞台刷新才能显示，下面通过计时器设置为30毫秒刷新一次的帧频
     Timer.add(e=>{stage.update();},30,0);
     //添加到舞台显示，可以添加多个
-    stage.addChild(testS,txt,flash);
+    stage.addChild(testS,txt,flash,this.woody);
 
   }
 
