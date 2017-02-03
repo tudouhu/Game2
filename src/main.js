@@ -6,6 +6,7 @@ import ReactDom from 'react-dom';
 import '../vendors/createjs';
 import Other from 'Other';
 import Test from 'Test';
+import Login from 'components/Login';
 import Timer from 'common/Timer';
 import Lib from 'res/Lib';
 import Woody from 'components/Woody';
@@ -59,11 +60,11 @@ class Main extends React.Component{
     this.woody.y=180;
 
 
-
+    //添加键盘事件
+    document.addEventListener('keydown',this.onKey);
+    document.addEventListener('keyup',this.onKey);
     //给文档添加鼠标移动事件
     document.addEventListener("mousemove",e=>{flash.txt.text=e.clientX+','+e.clientY});
-    //给姓名输入框添加输入事件
-    this.refs.name.addEventListener("input",e=>{console.log(e.target.value)});
 
 
     // 创建一个舞台，参数为画布
@@ -75,6 +76,41 @@ class Main extends React.Component{
 
   }
 
+  /**
+   * 键盘事件
+   * @param e
+   */
+  onKey=(e)=>{
+    let type=e.type=='keydown'?true:e.type=='keyup'?false:'';
+    let keyCode=e.keyCode;
+    switch(keyCode){
+      case 87://W
+        type?this.woody.jump():'';
+        break;
+      case 65://A
+        type?this.woody.startWalk(-2,0):type==false?this.woody.stopWalk():'';
+        break;
+      case 68://D
+        type?this.woody.startWalk(2,0):type==false?this.woody.stopWalk():'';
+        break;
+      case 74://J
+        this.woody.startAttack();
+        break;
+      case 75://K
+        this.woody.startguiqizhan();
+        break;
+      case 32://空格
+        this.woody.startDecelerate();
+        break;
+      default:
+        break;
+
+
+    }
+
+
+  }
+
 
   /**
    * 渲染
@@ -82,13 +118,10 @@ class Main extends React.Component{
   render(){
     return(
       <div>
-        <div ref='formDiv'>
-          名字<input type="text" ref='name'/>
-          密码<input type="text" ref='password'/>
-        </div>
         <Test></Test>
         <h1>A左 D右 W跳 J攻击 K技能</h1>
         <div ref='ajaxDiv'>即将获取来自nodejs的数据</div>
+        <Login></Login>
         <canvas ref='myCan' width='1000px' height='300px'></canvas>
       </div>
     );

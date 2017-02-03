@@ -95,13 +95,14 @@ class Woody extends BasePeople{
   startguiqizhan(){
     this.changeStop();
     this.animation.gotoAndPlay('guiqizhan');
-    this.addEventListener('tick',this.guiqizhaning=()=>{this.guiqizhaning();})
+    this.addEventListener('tick',this._guiqizhaning=()=>{this.guiqizhaning();});
+    console.log(111);
   }
 
   /**
    * 鬼气斩进行时
    */
-  guiqizhanIng(){
+  guiqizhaning(){
     if(this.animation.currentFrame==144){
       if(this.guiqizhan1!=1){
         let guiqizhan1=new Guiqizhan();
