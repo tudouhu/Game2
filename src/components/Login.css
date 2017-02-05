@@ -10,8 +10,7 @@ img{
   height: 50px;
   margin: 2px 2px 2px 2px;
   cursor: pointer;
-  border-width: 2px;
-  border-collapse: collapse;
+  outline-width: 2px;
 }
 .heroIcon{
   margin: 0px;
@@ -19,7 +18,6 @@ img{
   top: 0px;
   left: 0px;
   cursor: default;
-  border-style: none;
 }
 .iconDiv{
   /*头像选择div*/

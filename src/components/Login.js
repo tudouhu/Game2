@@ -143,7 +143,7 @@ class Login extends React.Component{
   onCilckImg=(e)=>{
     if(this.state.type=='注册'){
       if(this.icon)
-        this.icon.style['border-style']='';
+        this.icon.style['outline-style']='';
       if(this.refs.iconDivP.style.display=='')
         this.refs.iconDivP.style.display='block';
       else
@@ -156,9 +156,9 @@ class Login extends React.Component{
    * @param e
    */
   onCilckIcon=(e)=>{
-    e.target.style['border-style']='solid';
+    e.target.style['outline-style']='solid';
     if(this.icon){
-      this.icon.style['border-style']='';
+      this.icon.style['outline-style']='';
     }
     this.icon=e.target;
     this.refs.heroIcon.src=e.target.src;
