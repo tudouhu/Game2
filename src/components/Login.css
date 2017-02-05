@@ -8,19 +8,29 @@
 img{
   width: 50px;
   height: 50px;
-  padding: 2px 2px 2px 2px;
+  margin: 2px 2px 2px 2px;
+  cursor: pointer;
+  border-width: 2px;
+  border-collapse: collapse;
 }
 .heroIcon{
+  margin: 0px;
   position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: default;
+  border-style: none;
 }
 .iconDiv{
+  /*头像选择div*/
   position: absolute;
   padding-top: 10px;
   width: 180px;
   height: 150px;
   background-color:rgb(221,220,224);
-  text-align: center;
+  left: 60px;
   top: 0px;
+  display: none;
 }
 input{
   margin: 8px 0px 0px 10px;

@@ -29,8 +29,7 @@ class Login extends React.Component{
 
     //循环插入图片
     for(let i=1;i<=6;i++){
-      let str='<img src="assets/icon/icon_'+i+'.png"/>';
-      console.log(str);
+      let str='<img src="assets/icon/icon_'+i+'.png" />';
       // this.refs.iconDiv.appendChild(<img src={str}/>);
       this.refs.iconDiv.innerHTML+=str;
     }
@@ -43,10 +42,7 @@ class Login extends React.Component{
   render(){
       return(
        <div className={style.bk}>
-         <div  className={style.heroIcon} onClick={this.onCilckImg}>
-           {/*<img src="assets/icon/icon_1.png" />*/}
-           <img src="assets/img/icon.png"/>
-         </div>
+
          <div ref='formDiv' className={style.bk}>
            <h1>用户{this.state.type}</h1>
            <div className={style.nameDiv}>
@@ -62,8 +58,9 @@ class Login extends React.Component{
              <u onClick={this.change}>用户注册</u>
            </div>
          </div>
-         <div className={style.iconDiv}>
-           <div ref='iconDiv'>
+         <img ref='heroIcon' src="assets/img/icon.png" className={style.heroIcon} onClick={this.onCilckImg}/>
+         <div ref='iconDivP' className={style.iconDiv}>
+           <div ref='iconDiv' onClick={this.onCilckIcon}>
 
            </div>
          </div>
@@ -129,18 +126,45 @@ class Login extends React.Component{
     if(this.state.type=='登陆'){
       e.target.innerHTML ='用户'+this.state.type;
       this.setState({type:'注册'});
+      this.refs.heroIcon.style.cursor='pointer';
     }
     else if(this.state.type=='注册') {
       e.target.innerHTML ='用户'+this.state.type;
       this.setState({type:'登陆'});
+      this.refs.heroIcon.style.cursor='default';
     }
 
   }
 
-
+  /**
+   * 头像点击
+   * @param e
+   */
   onCilckImg=(e)=>{
-    console.log(e,e.target.src);
+    if(this.state.type=='注册'){
+      if(this.icon)
+        this.icon.style['border-style']='';
+      if(this.refs.iconDivP.style.display=='')
+        this.refs.iconDivP.style.display='block';
+      else
+        this.refs.iconDivP.style.display='';
+    }
   }
+
+  /**
+   * 头像选择点击
+   * @param e
+   */
+  onCilckIcon=(e)=>{
+    e.target.style['border-style']='solid';
+    if(this.icon){
+      this.icon.style['border-style']='';
+    }
+    this.icon=e.target;
+    this.refs.heroIcon.src=e.target.src;
+  }
+
+
 
 
 }
